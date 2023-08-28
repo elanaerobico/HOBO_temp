@@ -1,16 +1,7 @@
-mkdir ${HOME}/Documentos/GITHUB/HOBO_temp/packages && curl -SL https://github.com/jsheunis/matlab-spm-scripts-jsh/archive/v0.1.tar.gz | tar -xzC ${HOME}/scripts --strip-components 1
+mkdir ${HOME}/Documentos/GITHUB/packages && curl -SL https://github.com/elanaerobico/HOBO_temp/blob/main/data.tar.gz | tar -xzC ${HOME}/scripts --strip-components 1
 
-cd ${HOME}/spm12/src
-make PLATFORM=octave
-make PLATFORM=octave install
-
-cd ${HOME}/spm12/@file_array/private
-find . -name "mat2file*.*" -print0 | xargs -0 -I{} find '{}' \! -name "*.mex" -delete
-find . -name "file2mat*.*" -print0 | xargs -0 -I{} find '{}' \! -name "*.mex" -delete
 
 cd ${HOME}
 octave --no-gui --eval "addpath (fullfile (getenv (\"HOME\"), \"scripts\")); savepath ();"
 octave --no-gui --eval "addpath (fullfile (getenv (\"HOME\"), \"dicm2nii\")); savepath ();"
 octave --no-gui --eval "addpath (fullfile (getenv (\"HOME\"), \"spm12\")); savepath ();"
-
-data
